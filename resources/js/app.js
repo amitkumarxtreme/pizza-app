@@ -1,4 +1,7 @@
 import axios from 'axios'
+import {initAdmin} from './admin'
+
+initAdmin()
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
@@ -17,3 +20,4 @@ addToCart.forEach((btn) => {
         updateCart(pizza)
     })
 })
+
