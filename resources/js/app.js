@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {initAdmin} from './admin'
 import moment from 'moment'
+import { initStripe } from './stripe'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
@@ -53,9 +54,11 @@ function updateStatus(order) {
 
 updateStatus(order)
 
+initStripe()
+
 // Socket
 let socket = io()
-initAdmin(socket)
+
 //Join
 if(order) {
    socket.emit('join', `order_${order._id}`)
@@ -63,6 +66,7 @@ if(order) {
 
 let adminArea = window.location.pathname
 if(adminArea.includes('admin')) {
+    initAdmin(socket)
     socket.emit('join', 'adminRoom')
 }
 

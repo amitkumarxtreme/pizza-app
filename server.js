@@ -13,7 +13,7 @@ const passport = require('passport')
 const Emitter = require('events')
 
 // Database connection
-mongoose.connect("mongodb://localhost:27017/pizza" , {useNewUrlParser:true});
+mongoose.connect(process.env.MONGO_CONNECTION_URL , {useNewUrlParser:true});
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('Database connected...');
@@ -28,7 +28,7 @@ app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
     store: MongoDBStore.create({
-        mongoUrl: "mongodb://localhost:27017/pizza"
+        mongoUrl: process.env.MONGO_CONNECTION_URL
     }),
     saveUninitialized: false,
     cookie: { maxAge: 1000*60*60*24 } // 24 hours
@@ -60,7 +60,6 @@ app.set('views', path.join(__dirname, '/resources/views'))
 app.set('view engine', 'ejs')
 
 require('./routes/web')(app)
-
 
 const PORT = process.env.PORT || 3000
 

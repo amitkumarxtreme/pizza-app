@@ -13,6 +13,8 @@
   "author": "Amit Kumar",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@stripe/stripe-js": "^1.31.0",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
@@ -26,7 +28,8 @@
     "mongoose": "^6.3.4",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
-    "socket.io": "^4.5.1"
+    "socket.io": "^4.5.1",
+    "stripe": "^9.6.0"
   },
   "devDependencies": {
     "laravel-mix": "^6.0.43",
